@@ -1,0 +1,125 @@
+<html>
+<head>
+    <title>Login</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            background-size: cover;
+        }
+
+        .dowebok {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 430px;
+            height: 550px;
+            margin: -300px 0 0 -215px;
+            border: 1px solid #000000;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .logo {
+            width: 104px;
+            height: 104px;
+            margin: 50px auto 80px;
+        }
+
+        .form-item {
+            position: relative;
+            width: 360px;
+            margin: 0 auto;
+            padding-bottom: 30px;
+        }
+
+        .form-item input {
+            width: 360px;
+            height: 50px;
+            padding-left: 20px;
+            border: 1px solid #000000;
+            border-radius: 25px;
+            font-size: 18px;
+            color: #000000;
+            background-color: transparent;
+            outline: none;
+        }
+
+        .form-sub {
+            position: relative;
+            width: 360px;
+            margin: 0 auto;
+            padding-bottom: 30px;
+        }
+
+        .form-sub input {
+            width: 360px;
+            height: 50px;
+            border: 1px solid #000000;
+            border-radius: 25px;
+            font-size: 18px;
+            color: #000000;
+            background-color: transparent;
+            outline: none;
+        }
+
+        .form-sub p {
+            width: 360px;
+            height: 30px;
+            padding-left: 140px;
+            font-size: 18px;
+            color: #ff1111;
+            background-color: transparent;
+            outline: none;
+        }
+
+
+    </style>
+    <script language="javascript">
+        function validateLogin() {
+            const password = document.login_form.password.value;
+            let error_msg = ""
+            if ((password == "")) {
+                error_msg += "请输入口令!\r\n"
+            }
+            if ((error_msg != "")) {
+                alert(error_msg)
+                return false
+            }
+            return true
+        }
+    </script>
+
+</head>
+
+<body>
+
+<div class="dowebok">
+    <form action="" method="post" name="login_form">
+        <div class="logo"></div>
+
+        <div class="form-item">
+            <input id="password" type="password" name="password" autocomplete="off" placeholder="口令"/>
+        </div>
+        <div class="form-sub">
+            <input type="submit" value="登录" onClick="return validateLogin()"/>
+        </div>
+        {% if error_msg %}
+            <div class="form-sub">
+                <p>{{ error_msg }}</p>
+            </div>
+        {% endif %}
+    </form>
+</div>
+</body>
+</html>

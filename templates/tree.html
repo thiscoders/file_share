@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+    <title>{{ tree.name }}</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <style>
+
+        .dbs_div {
+            padding-left: 30px;
+        }
+
+        .dbs_div h5 {
+            font-size: 30px;
+        }
+
+        .dbs_div li {
+            font-size: 20px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="dbs_div">
+    {% for item in tree.children recursive %}
+        {% if item.children %}
+            <h5>{{ item.name }}</h5>
+            {{ loop(item.children) }}
+        {% else %}
+            <li><a href="{{ item.path }}">{{ item.name }}</a></li><br/>
+        {% endif %}
+    {% endfor %}
+</div>
+</body>
+</html>
