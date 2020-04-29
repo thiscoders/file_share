@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -38,4 +38,7 @@ def login():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    static_exist = os.path.exists(app.static_folder)
+    if not static_exist:
+        os.mkdir(app.static_folder)
+    app.run(host='0.0.0.0', debug=True)
